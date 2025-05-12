@@ -1,0 +1,12 @@
+{% extends 'mantenciones/base.html' %}
+{% block title %}Editar Mantención{% endblock %}
+{% block content %}
+<h2 class="mb-4">Editar mantención</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Guardar cambios</button>
+  <a href="{% url 'lista_mantenciones' %}" class="btn btn-secondary">Volver</a>
+</form>
+{% endblock %}

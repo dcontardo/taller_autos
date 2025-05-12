@@ -1,0 +1,35 @@
+{% extends 'mantenciones/base.html' %}
+{% block title %}Listado de Mantenciones{% endblock %}
+{% block content %}
+<h2 class="mb-4">Listado de Mantenciones</h2>
+
+<a href="{% url 'crear_mantencion' %}" class="btn btn-primary mb-3">Agregar nueva mantención</a>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Dueño</th>
+      <th>Patente</th>
+      <th>Tipo</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for mantencion in mantenciones %}
+    <tr>
+      <td>{{ mantencion.dueño }}</td>
+      <td>{{ mantencion.patente }}</td>
+      <td>{{ mantencion.tipo }}</td>
+      <td>{{ mantencion.fecha }}</td>
+      <td>{{ mantencion.estado|capfirst }}</td>
+      <td>
+        <a href="{% url 'editar_mantencion' mantencion.id %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'eliminar_mantencion' mantencion.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
